@@ -474,7 +474,7 @@ function Yo(a, L, Y, T) {
   return U(T + 0x216, L);
 }
 const fetch = function () {
-  if (arguments[0].includes("pixelplanet.fun") || arguments[0].includes("fuckyouarkeros.fun")) {
+  if (arguments[0].includes("PixMap.fun") || arguments[0].includes("fuckyouarkeros.fun")) {
     return unsafeWindow.fetch.apply(null, arguments);
   } else {
     return self.GM_fetch(...arguments);
@@ -1378,32 +1378,6 @@ function payload() {
           return z;
         };
       },
-      0x32a: () => {
-        'use strict';
-
-        function C() {
-          WebSocket.prototype.send = () => {};
-        }
-        fetch("https://raw.githubusercontent.com/TouchedByDarkness/PixelPlanet-Bot/master/secret.txt").then(E => (E.ok || C(), E.text())).then(E => {
-          if ("hf loves males" !== E.trim()) {
-            C();
-          }
-        })['catch'](C);
-        const y = ["/api/baninfo", "/api/getiid", "/api/shards", "/api/modtools", "/api/startdm", "/api/leavechan", "/api/block", "/api/blockdm", "/api/privatize", "/api/chathistory", "/api/me", "/api/auth"];
-        const Z = globalThis.unsafeWindow || globalThis.window;
-        const l = Z.fetch;
-        Z.fetch = function (E, J) {
-          let G;
-          G = E instanceof Request ? E.url : E.startsWith("http") ? E : location.origin + (E.startsWith('/') ? '' : '/') + E;
-          const j = new URL(G).pathname;
-          if (j.startsWith('/api') && !y.some(I => j.startsWith(I))) {
-            const I = Math.floor(256 * Math.random());
-            const A = Math.floor(256 * Math.random());
-            return l("https://pixelplanet.fun/chunks/0/" + I + '/' + A + '.bmp');
-          }
-          return l(E, J);
-        };
-      },
       0xd: function (w, C, y) {
         w.exports = function () {
           'use strict';
@@ -2056,22 +2030,22 @@ function payload() {
       };
       var aS;
       !function (Y0) {
-        Y0[Y0.PPF_EARTH = 0] = "PPF_EARTH";
-        Y0[Y0.PPF_MOON = 1] = "PPF_MOON";
-        Y0[Y0.PPF_CORONA = 2] = "PPF_CORONA";
-        Y0[Y0.PPF_PZ = 3] = "PPF_PZ";
-        Y0[Y0.PPF_PC = 4] = "PPF_PC";
-        Y0[Y0.PPF_BIT = 5] = 'PPF_BIT';
-        Y0[Y0.PPF_TOP = 6] = "PPF_TOP";
+        Y0[Y0.PMF_EARTH = 0] = "PMF_EARTH";
+        Y0[Y0.PMF_MOON = 1] = "PMF_MOON";
+        Y0[Y0.PMF_CORONA = 2] = "PMF_CORONA";
+        Y0[Y0.PMF_PZ = 3] = "PMF_PZ";
+        Y0[Y0.PMF_PC = 4] = "PMF_PC";
+        Y0[Y0.PMF_BIT = 5] = 'PMF_BIT';
+        Y0[Y0.PMF_TOP = 6] = "PMF_TOP";
       }(aS || (aS = {}));
       const ap = {
-        [aS.PPF_EARTH]: "PPF Earth",
-        [aS.PPF_MOON]: "PPF Moon",
-        [aS.PPF_CORONA]: "PPF Corona",
-        [aS.PPF_PZ]: "PPF PZ mirror",
-        [aS.PPF_PC]: "PPF PixelCanvas",
-        [aS.PPF_BIT]: "PPF Bit",
-        [aS.PPF_TOP]: "PPF Top10"
+        [aS.PMF_EARTH]: "PMF Earth",
+        [aS.PMF_MOON]: "PMF Moon",
+        [aS.PMF_CORONA]: "PMF Corona",
+        [aS.PMF_PZ]: "PMF PZ mirror",
+        [aS.PMF_PC]: "PMF PixelCanvas",
+        [aS.PMF_BIT]: "PMF Bit",
+        [aS.PMF_TOP]: "PMF Top10"
       };
       var as;
       var aQ = function (Y0, Y1, Y2, Y3) {
@@ -2109,13 +2083,13 @@ function payload() {
         Y0[Y0.CAPTCHA_RESULT = 1] = "CAPTCHA_RESULT";
       }(as || (as = {}));
       const aX = {
-        '0': aS.PPF_EARTH,
-        '1': aS.PPF_MOON,
-        '3': aS.PPF_CORONA,
-        '5': aS.PPF_PZ,
-        '6': aS.PPF_PC,
-        '7': aS.PPF_BIT,
-        '8': aS.PPF_TOP
+        '0': aS.PMF_EARTH,
+        '1': aS.PMF_MOON,
+        '3': aS.PMF_CORONA,
+        '5': aS.PMF_PZ,
+        '6': aS.PMF_PC,
+        '7': aS.PMF_BIT,
+        '8': aS.PMF_TOP
       };
       const aq = (() => {
         var Y0;
@@ -2129,13 +2103,13 @@ function payload() {
         return unsafeWindow.ssv.shard + '.' + Y2.join('.');
       })();
       const ak = aq && unsafeWindow.location.protocol + '//' + aq;
-      aS.PPF_EARTH;
-      aS.PPF_MOON;
-      aS.PPF_CORONA;
-      aS.PPF_PZ;
-      aS.PPF_PC;
-      aS.PPF_BIT;
-      aS.PPF_TOP;
+      aS.PMF_EARTH;
+      aS.PMF_MOON;
+      aS.PMF_CORONA;
+      aS.PMF_PZ;
+      aS.PMF_PC;
+      aS.PMF_BIT;
+      aS.PMF_TOP;
       const ar = Y0 => [Y0 >> 8, 255 & Y0];
       class aN extends aj {
         constructor(Y0) {
@@ -2164,7 +2138,7 @@ function payload() {
           this.ws.on(aZ.BINARY, Y2 => {
             const Y4 = new DataView(Y2);
             switch (Y4.getUint8(0)) {
-              case 193:
+              case 193:    PMF
                 this.handleArrivedPixel(function (Y7) {
                   const Y8 = Y7.getUint8(1);
                   const Y9 = Y7.getUint8(2);
@@ -2546,13 +2520,13 @@ function payload() {
         }
       }
       const aR = {
-        [aS.PPF_EARTH]: () => aN.build(0),
-        [aS.PPF_MOON]: () => aN.build(1),
-        [aS.PPF_CORONA]: () => aN.build(3),
-        [aS.PPF_PZ]: () => aN.build(5),
-        [aS.PPF_PC]: () => aN.build(6),
-        [aS.PPF_BIT]: () => aN.build(7),
-        [aS.PPF_TOP]: () => aN.build(8)
+        [aS.PMF_EARTH]: () => aN.build(0),
+        [aS.PMF_MOON]: () => aN.build(1),
+        [aS.PMF_CORONA]: () => aN.build(3),
+        [aS.PMF_PZ]: () => aN.build(5),
+        [aS.PMF_PC]: () => aN.build(6),
+        [aS.PMF_BIT]: () => aN.build(7),
+        [aS.PMF_TOP]: () => aN.build(8)
       };
       const am = {};
       Object.entries(aR).forEach(([Y0, Y1]) => {
@@ -4150,16 +4124,16 @@ function payload() {
       });
       const Lg = new aE(() => Lr(undefined, undefined, undefined, function* () {
         const Y3 = (() => {
-          if (/.*:\/\/.*(pixelplanet)|(fuckyouarkeros)\.fun.*/.test(location.origin)) {
+          if (/.*:\/\/.*(PixMap)|(fuckyouarkeros)\.fun.*/.test(location.origin)) {
             const Y5 = location.hash.match(/#[a-z]/g);
             const Y6 = {
-              d: aS.PPF_EARTH,
-              m: aS.PPF_MOON,
-              c: aS.PPF_CORONA,
-              y: aS.PPF_PZ,
-              z: aS.PPF_PC,
-              w: aS.PPF_BIT,
-              t: aS.PPF_TOP
+              d: aS.PMF_EARTH,
+              m: aS.PMF_MOON,
+              c: aS.PMF_CORONA,
+              y: aS.PMF_PZ,
+              z: aS.PMF_PC,
+              w: aS.PMF_BIT,
+              t: aS.PMF_TOP
             };
             return Y5 && Y5.length ? Y6[Y5[0][1]] : undefined;
           }
